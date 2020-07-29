@@ -1,7 +1,7 @@
 from watchdog import CWatchDog
 from time import sleep
 
-port = ''
+port = '/dev/ttyACM0'
 
 if __name__ == '__main__':
     watchdog = CWatchDog(port)
