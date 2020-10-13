@@ -46,6 +46,7 @@ class CWatchDog:
             message = json.loads(data)
             json_answer = message.get('result')
             speed = json_answer[2].split(';')[0]
+            print(type(speed))
             return speed
         except:
             return 0
