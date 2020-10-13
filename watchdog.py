@@ -21,7 +21,7 @@ class CWatchDog:
         speed = 0
         handle = open("speed.txt")
         try:
-            speed = handle.readlines()
+            speed = int(handle.readline())
             print(f'loaded speed from "speed.txt is {speed}"')
         except:
             print('Load speed from "speed.txt" failed')
