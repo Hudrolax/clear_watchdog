@@ -45,8 +45,7 @@ class CWatchDog:
             data = sock.recv(512)
             message = json.loads(data)
             json_answer = message.get('result')
-            speed = json_answer[2].split(';')[0]
-            print(type(speed))
+            speed = int(json_answer[2].split(';')[0])
             return speed
         except:
             return 0
