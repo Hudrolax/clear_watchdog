@@ -64,5 +64,5 @@ class CWatchDog:
 
     def _ping(self):
         while True:
-            CWatchDog.send_to_serial(self.__serial, '~U')  # Отправка команды "я в норме" на вотчдог
+            self.send_to_serial(self.__serial, '~U')  # Отправка команды "я в норме" на вотчдог
             sleep(5)
