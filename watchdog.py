@@ -74,19 +74,20 @@ class CWatchDog:
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             server_address = (ip, port)
-            sock.settimeout(1)
+            sock.settimeout(3)
             sock.connect(server_address)
         except:
             return 0
 
         try:
-            request = '{"id":0,"jsonrpc":"2.0","method":"miner_getstat1"}'
-            request = request.encode()
-            sock.sendall(request)
-            data = sock.recv(512)
-            message = json.loads(data)
-            json_answer = message.get('result')
-            speed = int(json_answer[2].split(';')[0])
+            request = {"id": 0, "jsonrpc": "2.0", "method": "miner_getstat1"}
+            sock.sendall(json.dumps(request).encode())
+            sock.sendall(os.linesep.encode())
+            sock.shutdown(socket.SHUT_WR)  # no more writing
+            with sock.makefile('r', encoding='utf-8') as file:
+                response = json.load(file)
+            json_answer = response.get('result')
+            speed = json_answer[2].split(';')[0]
             return speed
         except:
             return 0
