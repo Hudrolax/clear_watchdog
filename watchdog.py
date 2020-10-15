@@ -5,6 +5,7 @@ import json
 import requests
 from datetime import datetime
 from time import sleep
+import os
 
 class CheckInternetConnection:
     CHECKTIME = 300
