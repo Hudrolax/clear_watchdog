@@ -89,7 +89,7 @@ class CWatchDog:
                 response = json.load(file)
             json_answer = response.get('result')
             speed = json_answer[2].split(';')[0]
-            return speed
+            return int(speed)
         except:
             return 0
         finally:
