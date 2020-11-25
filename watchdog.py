@@ -98,6 +98,7 @@ class CWatchDog:
     def send_to_serial(self, _s_port, s):
         speed = self.get_speed('127.0.0.1', 3333)
         if speed >= self._terget_speed or self._terget_speed == 0 or not self._internet_connection.internet_is_available():
+            print(f'speed is {speed/1000} mh/s')
             try:
                 _s_port.write(bytes(s, 'utf-8'))
             except:
