@@ -66,7 +66,7 @@ class MinerLogs:
                             if piece.find('GPU') > -1:
                                 gpu = int(piece.replace('GPU',''))
                                 crushes.append(gpu)
-                    elif line.find(' Radeon RX ') > -1 and line.find(' GPU') > -1:
+                    elif line.find('Radeon') > -1 and line.find('RX') > -1 and line.find('GPU') > -1:
                         pieces = line.split(' ')
                         for piece in pieces:
                             if piece.find('GPU') > -1:
@@ -76,7 +76,6 @@ class MinerLogs:
                                 el = [gpu, 'RX']
                                 if not el in types:
                                     types.append([gpu, 'RX'])
-        print(types)
         return [crushes, types]
 
 
