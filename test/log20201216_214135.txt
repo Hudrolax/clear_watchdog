@@ -1,4 +1,0 @@
-2020.12.16:21:41:35.546: main Phoenix Miner 5.3b Linux/gcc - Release build
-2020.12.16:21:41:35.546: main Cmd line: -pool coinotron.com:3344 -wal Hudro.rig01 -config /root/phoenix/config.txt 
-2020.12.16:21:41:35.546: main /root/phoenix/config.txt: -logsmaxsize 10 -rmode 2 -minRigSpeed 120 -retrydelay 5 -tt 30,30,30,30,30,30,30,30 -cvddc 865,865,865,865,865,865,865,865 -mvddc 890,890,890,890,890,890,890,890 -cclock *:1130 -mclock *:2000 -daglim 4062 
-2020.12.16:21:41:35.547: main No CUDA driver found

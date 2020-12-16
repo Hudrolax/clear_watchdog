@@ -55,17 +55,26 @@ class MinerLogs:
     def parse_logs():
         logs = MinerLogs.get_today_logs()
         crushes = []
+        types = []
         for log in logs:
             with open(log) as file:
                 lines = file.readlines()
                 for line in lines:
-                    if line.find('not responding') > -1:
+                    if line.find('not responding') > -1 or line.find('Incorrect ETH share from ') > -1:
                         pieces = line.split(' ')
                         for piece in pieces:
                             if piece.find('GPU') > -1:
                                 gpu = int(piece.replace('GPU',''))
                                 crushes.append(gpu)
-        return [crushes]
+                    elif line.find(' Radeon RX ') > -1 and line.find(' GPU') > -1:
+                        pieces = line.split(' ')
+                        for piece in pieces:
+                            if piece.find('GPU') > -1:
+                                gpu = piece.replace('GPU', '')
+                                gpu = gpu.replace(':', '')
+                                gpu = int(gpu)
+                                types.append([gpu, 'RX'])
+        return [crushes, types]
 
 
 class Card:
@@ -74,6 +83,17 @@ class Card:
         self.crushes = 0
         self.cvddc = cvddc
         self.mvddc = mvddc
+        self.type = None
+
+    @property
+    def normal_speed(self):
+        if self.type == None:
+            return 0
+
+        if self.type == 'RX':
+            return 25
+        else:
+            return 35
 
     def __str__(self):
         return f'speed={self.speed}:crushes={self.crushes} ({self.cvddc}/{self.mvddc})'
@@ -104,6 +124,10 @@ class Miner:
             parsed_log = MinerLogs.parse_logs()
             for card in enumerate(self.cards):
                 card[1].crushes = parsed_log[0].count(card[0]+1)
+                type = None
+                for parse_type in parsed_log[1]:
+                    if parse_type[0] == card[0]+1:
+                        card[1].type = parse_type[1]
 
             sleep(5)
 
@@ -172,9 +196,13 @@ class Miner:
     def print_cards_list(self):
         columns = 5
         table = PrettyTable()
-        table.field_names = ["#", "speed", "crushes", "cvddc", "mvddc"]
+        table.field_names = ["#", "speed", "crushes", "cvddc", "mvddc", 'type']
         for card in enumerate(self.cards):
-            table.add_row([card[0]+1, card[1].speed, card[1].crushes, card[1].cvddc, card[1].mvddc])
+            _addon = ''
+            if card[1].speed < card[1].normal_speed:
+                _addon = '!!!'
+            table.add_row([card[0]+1, f'{card[1].speed} {_addon}', card[1].crushes, card[1].cvddc, card[1].mvddc, card[1].type])
+        print('----------------------------------------------------------------------')
         print(f'Total speed: {self.get_speed()}')
         print(table)
 
