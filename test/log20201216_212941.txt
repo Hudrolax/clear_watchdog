@@ -1,0 +1,129 @@
+2020.12.16:21:29:41.135: main Phoenix Miner 5.3b Linux/gcc - Release build
+2020.12.16:21:29:41.135: main Cmd line: -pool coinotron.com:3344 -wal Hudro.rig01 -config /root/phoenix/config.txt 
+2020.12.16:21:29:41.135: main /root/phoenix/config.txt: -logsmaxsize 10 -rmode 2 -minRigSpeed 120 -retrydelay 5 -tt 30,30,30,30,30,30,30,30 -cvddc 865,865,865,865,865,865,865,865 -mvddc 890,890,890,890,890,890,890,890 -cclock *:1130 -mclock *:2000 -daglim 4064 
+2020.12.16:21:29:41.201: main No CUDA driver found
+2020.12.16:21:30:07.317: main OpenCL driver version: 20.20-1089974-ubuntu-20.04
+2020.12.16:21:30:07.339: main Available GPUs for mining:
+2020.12.16:21:30:07.339: main GPU1: Radeon RX 570 Series (pcie 1), OpenCL 1.2, 4 GB VRAM, 32 CUs
+2020.12.16:21:30:07.340: main GPU2: Radeon RX 570 Series (pcie 2), OpenCL 1.2, 4 GB VRAM, 32 CUs
+2020.12.16:21:30:07.340: main GPU3: Radeon RX 570 Series (pcie 3), OpenCL 1.2, 4 GB VRAM, 32 CUs
+2020.12.16:21:30:07.340: main GPU4: Radeon RX 570 Series (pcie 5), OpenCL 1.2, 4 GB VRAM, 32 CUs
+2020.12.16:21:30:07.340: main GPU5: Radeon RX 570 Series (pcie 6), OpenCL 1.2, 4 GB VRAM, 32 CUs
+2020.12.16:21:30:07.340: main GPU6: Radeon RX 570 Series (pcie 7), OpenCL 1.2, 4 GB VRAM, 32 CUs
+2020.12.16:21:30:07.340: main GPU7: Radeon RX 570 Series (pcie 8), OpenCL 1.2, 4 GB VRAM, 32 CUs
+2020.12.16:21:30:07.340: main GPU8: Radeon RX 570 Series (pcie 10), OpenCL 1.2, 4 GB VRAM, 32 CUs
+2020.12.16:21:30:07.445: main AMD sysfs monitor initialized
+2020.12.16:21:30:07.468: main Eth: the pool list contains 1 pool (1 from command-line)
+2020.12.16:21:30:07.468: main Eth: primary pool: coinotron.com:3344
+2020.12.16:21:30:07.552: main Starting GPU mining
+2020.12.16:21:30:07.552: main GPU1: fan PWM control mode 2, min 0, max 255
+2020.12.16:21:30:07.552: main GPU2: fan PWM control mode 2, min 0, max 255
+2020.12.16:21:30:07.553: main GPU3: fan PWM control mode 2, min 0, max 255
+2020.12.16:21:30:07.553: main GPU4: fan PWM control mode 2, min 0, max 255
+2020.12.16:21:30:07.553: main GPU5: fan PWM control mode 2, min 0, max 255
+2020.12.16:21:30:07.553: main GPU6: fan PWM control mode 2, min 0, max 255
+2020.12.16:21:30:07.553: main GPU7: fan PWM control mode 2, min 0, max 255
+2020.12.16:21:30:07.553: main GPU8: fan PWM control mode 2, min 0, max 255
+2020.12.16:21:30:07.656: wdog Starting watchdog thread
+2020.12.16:21:30:07.657: main Eth: Connecting to ethash pool coinotron.com:3344 (proto: EthProxy)
+2020.12.16:21:30:07.657: main GPU1: 24C 34% 31W, GPU2: 10C 31% 30W, GPU3: 29C 34% 32W, GPU4: 14C 28% 29W, GPU5: 28C 34% 30W, GPU6: 15C 34% 33W, GPU7: 12C 28% 30W, GPU8: 18C 43% 30W
+GPUs power: 246.4 W
+2020.12.16:21:30:07.773: eths Eth: Connected to ethash pool coinotron.com:3344 (178.217.186.125)
+2020.12.16:21:30:07.773: eths Eth: Send: {"id":1,"jsonrpc":"2.0","method":"eth_submitLogin","worker":"eth1.0","params":["Hudro.rig01"]}
+
+2020.12.16:21:30:07.852: eths Eth: Received: { "id": 1, "result": true, "error": null }
+2020.12.16:21:30:07.858: main Listening for CDM remote manager at port 3333 in read-only mode
+2020.12.16:21:30:07.871: eths Eth: Send: {"id":5,"jsonrpc":"2.0","method":"eth_getWork","params":[]}
+
+2020.12.16:21:30:07.949: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xdcbaad0f939f82782c4a7aab95834f59dec97a92890da1802b37811cc959122f","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:07.949: eths Eth: New job #dcbaad0f from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:07.951: GPU1 GPU1: Starting up... (0)
+2020.12.16:21:30:07.951: GPU1 GPU1: Generating ethash light cache for epoch #382
+2020.12.16:21:30:07.951: GPU2 GPU2: Starting up... (0)
+2020.12.16:21:30:07.952: GPU3 GPU3: Starting up... (0)
+2020.12.16:21:30:07.952: GPU4 GPU4: Starting up... (0)
+2020.12.16:21:30:07.953: GPU5 GPU5: Starting up... (0)
+2020.12.16:21:30:07.953: GPU6 GPU6: Starting up... (0)
+2020.12.16:21:30:07.954: GPU7 GPU7: Starting up... (0)
+2020.12.16:21:30:07.954: GPU8 GPU8: Starting up... (0)
+2020.12.16:21:30:08.022: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0x99034790329f506a03dffa27e5f0ad11b5152d3596d6d7acad5deba08e3f8af5","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:08.022: eths Eth: New job #99034790 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:08.963: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0x1d5c2f575c93ebdd02e12914dce9fc892fc96c9187d1a6e9c9dedebb68a77e3f","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:08.963: eths Eth: New job #1d5c2f57 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:09.924: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0x3890e18d6793ce6ae7760f7ec208c7ab1fe3efb90d3957b88adce1743d1c65d1","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:09.924: eths Eth: New job #3890e18d from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:11.029: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xc05dd07b81f5bbd2f8802f77cb9fc9ce2d1cf0063d1246d4bdbdecb97165a6c9","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:11.029: eths Eth: New job #c05dd07b from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:11.143: GPU1 Light cache generated in 3.2 s (20.0 MB/s)
+2020.12.16:21:30:12.040: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xcbc97e8ed75b6df0406a85712e19b04c80836a6fddb266af31c9622316040f66","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:12.040: eths Eth: New job #cbc97e8e from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:12.666: main Eth speed: 0.000 MH/s, shares: 0/0/0, time: 0:00
+2020.12.16:21:30:12.666: main GPUs: 1: 0.000 MH/s (0) 2: 0.000 MH/s (0) 3: 0.000 MH/s (0) 4: 0.000 MH/s (0) 5: 0.000 MH/s (0) 6: 0.000 MH/s (0) 7: 0.000 MH/s (0) 8: 0.000 MH/s (0)
+2020.12.16:21:30:13.319: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0x0bac2db1f8a3373383bf8f2085341fefdf0d585c8e37467c03d67c0c776f475f","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:13.319: eths Eth: New job #0bac2db1 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:14.390: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xdab1460d6af0d3c24b43e3c4491ce9fc9b11cf24bdb2645a6088ec37f2083637","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:14.390: eths Eth: New job #dab1460d from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:15.547: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xee738e79084cf9d0aef61041f3c786ce430081e2b9e479ba911d9be63ee65f49","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:15.547: eths Eth: New job #ee738e79 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:16.680: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0x5c66be3a5bd90b39262d822aa9b40380f2ed6a7ed32da445a1bade0756affed9","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:16.680: eths Eth: New job #5c66be3a from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:17.456: GPU1 GPU1: DAG size limited from 4079 MB to 4063 MB
+2020.12.16:21:30:17.678: main Eth speed: 0.000 MH/s, shares: 0/0/0, time: 0:00
+2020.12.16:21:30:17.678: main GPUs: 1: 0.000 MH/s (0) 2: 0.000 MH/s (0) 3: 0.000 MH/s (0) 4: 0.000 MH/s (0) 5: 0.000 MH/s (0) 6: 0.000 MH/s (0) 7: 0.000 MH/s (0) 8: 0.000 MH/s (0)
+2020.12.16:21:30:17.766: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0x2512c758324fceb2b24abbdcc496a5fd2234b03475d215cad5aeaa959a57f374","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:17.766: eths Eth: New job #2512c758 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:17.773: eths Eth: Send: {"id":5,"jsonrpc":"2.0","method":"eth_getWork","params":[]}
+
+2020.12.16:21:30:17.852: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0x2512c758324fceb2b24abbdcc496a5fd2234b03475d215cad5aeaa959a57f374","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:18.749: GPU1 GPU1: Free VRAM: 3.968 GB; used: 17179869183.992 GB
+2020.12.16:21:30:18.750: GPU1 Forcing -gser 2 (was -gser 0) because some GPUs require it
+2020.12.16:21:30:18.863: GPU2 GPU2: DAG size limited from 4079 MB to 4063 MB
+2020.12.16:21:30:18.885: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xd036f2e3dd95a1a4e96a9f4765b8abc8d676e58bbb69a3ab8f5f3308f7ab1cff","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:18.885: eths Eth: New job #d036f2e3 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:19.702: GPU2 GPU2: Free VRAM: 3.968 GB; used: 17179869183.988 GB
+2020.12.16:21:30:19.818: GPU3 GPU3: DAG size limited from 4079 MB to 4063 MB
+2020.12.16:21:30:19.901: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0x607acd0140dbeda6b3b53933780628b20c2add6694ad03668c68276dc38c2f82","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:19.901: eths Eth: New job #607acd01 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:20.676: GPU3 GPU3: Free VRAM: 3.968 GB; used: 17179869183.988 GB
+2020.12.16:21:30:20.820: GPU4 GPU4: DAG size limited from 4079 MB to 4063 MB
+2020.12.16:21:30:21.067: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xe2666067733bb1c4cd6f38a9617bc5d778119642f72c9edc40b035b12db2a91c","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:21.067: eths Eth: New job #e2666067 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:21.699: GPU4 GPU4: Free VRAM: 3.937 GB; used: 0.019 GB
+2020.12.16:21:30:21.888: GPU5 GPU5: DAG size limited from 4079 MB to 4063 MB
+2020.12.16:21:30:22.135: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0x09dc2f992eddea0e43e8746f4e56413fb0b971e40c620f0215b3c3ae8d75ed29","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:22.135: eths Eth: New job #09dc2f99 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:22.682: GPU5 GPU5: Free VRAM: 3.968 GB; used: 17179869183.988 GB
+2020.12.16:21:30:22.689: main Eth speed: 0.000 MH/s, shares: 0/0/0, time: 0:00
+2020.12.16:21:30:22.689: main GPUs: 1: 0.000 MH/s (0) 2: 0.000 MH/s (0) 3: 0.000 MH/s (0) 4: 0.000 MH/s (0) 5: 0.000 MH/s (0) 6: 0.000 MH/s (0) 7: 0.000 MH/s (0) 8: 0.000 MH/s (0)
+2020.12.16:21:30:22.868: GPU6 GPU6: DAG size limited from 4079 MB to 4063 MB
+2020.12.16:21:30:23.260: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xb766b6a0edadf6ee850409f57286dfb6242d14294e17767444aecc10987ab8de","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:23.260: eths Eth: New job #b766b6a0 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:23.780: GPU6 GPU6: Free VRAM: 3.968 GB; used: 17179869183.988 GB
+2020.12.16:21:30:23.909: GPU7 GPU7: DAG size limited from 4079 MB to 4063 MB
+2020.12.16:21:30:24.412: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xdf2321baf5cb57ee3e2e923d0ddd788b534ac561c7d540023e2b5a308b4acb9b","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:24.412: eths Eth: New job #df2321ba from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:24.870: GPU7 GPU7: Free VRAM: 3.937 GB; used: 0.019 GB
+2020.12.16:21:30:25.000: GPU8 GPU8: DAG size limited from 4079 MB to 4063 MB
+2020.12.16:21:30:25.514: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xa9ae6948da16b550a6b7291179801b485c05c710b086a251cee139713e0f0a20","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:25.514: eths Eth: New job #a9ae6948 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:25.899: GPU8 GPU8: Free VRAM: 3.968 GB; used: 17179869183.992 GB
+2020.12.16:21:30:25.899: GPU8 GPU8: DAG size limited from 4079 MB to 4063 MB
+2020.12.16:21:30:25.899: GPU8 GPU8: Disabling DAG pre-allocation (not enough VRAM)
+2020.12.16:21:30:25.899: GPU8 GPU8: Allocating DAG for epoch #382 (3.97) GB
+2020.12.16:21:30:25.923: GPU8 GPU8: Generating DAG for epoch #382
+2020.12.16:21:30:26.620: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xf3347303635f9949e4e33c158b20462fa10756b97f0208178bca0383b85e3a06","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:26.620: eths Eth: New job #f3347303 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:27.666: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0x8c346cb60e65350a692e67fc92248c673ab0a7c3b5db81d9a6fb449033d6f824","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:27.666: eths Eth: New job #8c346cb6 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:27.773: eths Eth: Send: {"id":5,"jsonrpc":"2.0","method":"eth_getWork","params":[]}
+
+2020.12.16:21:30:27.773: eths Eth: Send: {"id":6,"jsonrpc":"2.0","method":"eth_submitHashrate","params":["0x0","0x71f4e3fd1dbd3604a2287b2fe19890a84d7423fe4b863e4a743c134b118e7ddc"]}
+
+2020.12.16:21:30:27.812: main Eth speed: 0.000 MH/s, shares: 0/0/0, time: 0:00
+2020.12.16:21:30:27.812: main GPUs: 1: 0.000 MH/s (0) 2: 0.000 MH/s (0) 3: 0.000 MH/s (0) 4: 0.000 MH/s (0) 5: 0.000 MH/s (0) 6: 0.000 MH/s (0) 7: 0.000 MH/s (0) 8: 0.000 MH/s (0)
+2020.12.16:21:30:27.849: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0x8c346cb60e65350a692e67fc92248c673ab0a7c3b5db81d9a6fb449033d6f824","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:27.922: eths Eth: Received: { "id": 6, "result": true, "error": null }
+2020.12.16:21:30:28.789: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xfcbc0b88250b7b4cd554b44ff613701ce06075f590ad4b694e655c122104eba2","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:28.789: eths Eth: New job #fcbc0b88 from coinotron.com:3344; diff: 8589MH
+2020.12.16:21:30:29.463: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0xe9125786fd28edfb89326e77246c661bd68064f8a2d6bc115434c3dd54255223","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x5FF8"]}
+2020.12.16:21:30:29.463: eths Eth: New job #e9125786 from coinotron.com:3344; diff: 8589MH
