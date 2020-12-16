@@ -174,7 +174,7 @@ class Miner:
         table = PrettyTable()
         table.field_names = ["#", "speed", "crushes", "cvddc", "mvddc"]
         for card in enumerate(self.cards):
-            table.add_row([card[0], card[1].speed, card[1].crushes, card[1].cvddc, card[1].mvddc])
+            table.add_row([card[0]+1, card[1].speed, card[1].crushes, card[1].cvddc, card[1].mvddc])
         print(f'Total speed: {self.get_speed()}')
         print(table)
 
