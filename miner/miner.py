@@ -5,6 +5,7 @@ import threading
 from time import sleep
 from datetime import datetime
 from config import MINER_PATH, MINER_LOG_MASK
+from prettytable import PrettyTable
 
 class MinerConfig:
     def __init__(self):
@@ -169,8 +170,13 @@ class Miner:
         return len(self.cards)
 
     def print_cards_list(self):
+        columns = 5
+        table = PrettyTable()
+        table.field_names = ["#", "speed", "crushes", "cvddc", "mvddc"]
         for card in enumerate(self.cards):
-            print(f'{card[0]}: {card[1]}')
+            table.add_row([card[0], card[1].speed, card[1].crushes, card[1].cvddc, card[1].mvddc])
+        print(f'Total speed: {self.get_speed()}')
+        print(table)
 
 if __name__ == '__main__':
     crushes = MinerLogs.parse_logs()
