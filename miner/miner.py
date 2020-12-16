@@ -73,7 +73,10 @@ class MinerLogs:
                                 gpu = piece.replace('GPU', '')
                                 gpu = gpu.replace(':', '')
                                 gpu = int(gpu)
-                                types.append([gpu, 'RX'])
+                                el = [gpu, 'RX']
+                                if not el in types:
+                                    types.append([gpu, 'RX'])
+        print(types)
         return [crushes, types]
 
 
