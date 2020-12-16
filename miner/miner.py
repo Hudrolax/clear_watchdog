@@ -46,7 +46,7 @@ class MinerLogs:
         dirs = os.listdir(MINER_PATH)
         file_list = []
         for file in dirs:
-            if file.find(MINER_LOG_MASK) > -1 and (datetime.now()-MinerLogs.modification_date(MINER_PATH+file)).total_seconds() < 3600:
+            if file.find(MINER_LOG_MASK) > -1 and (datetime.now()-MinerLogs.modification_date(MINER_PATH+file)).total_seconds() < 86400:
                 file_list.append(MINER_PATH+file)
         return file_list
 
@@ -64,7 +64,7 @@ class MinerLogs:
                             if piece.find('GPU') > -1:
                                 gpu = int(piece.replace('GPU',''))
                                 crushes.append(gpu)
-        return crushes
+        return [crushes]
 
 
 class Card:
@@ -95,6 +95,14 @@ class Miner:
                 self.cards.append(Card(cvddc[1], self.config.mvddc[cvddc[0]]))
             json = self.get_json()
             _speeds = self._get_speed_different(json)
+            for speed in enumerate(_speeds):
+                try:
+                    self.cards[speed[0]].speed = speed[1]/1000
+                except IndexError:
+                    continue
+            parsed_log = MinerLogs.parse_logs()
+            for card in enumerate(self.cards):
+                card[1].crushes = parsed_log[0].count(card[0]+1)
 
             sleep(5)
 
@@ -160,8 +168,10 @@ class Miner:
     def get_cards_count(self):
         return len(self.cards)
 
+    def print_cards_list(self):
+        for card in enumerate(self.cards):
+            print(f'{card[0]}: {card[1]}')
+
 if __name__ == '__main__':
-    miner = Miner('127.0.0.1', 3333)
-    sleep(1)
-    for card in miner.cards:
-        print(card)
+    crushes = MinerLogs.parse_logs()
+    print(crushes)
