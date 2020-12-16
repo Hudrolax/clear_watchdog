@@ -79,6 +79,10 @@ class MinerLogs:
                                     model = 'RX 570'
                                 elif initial_line.find('580') > -1:
                                     model = 'RX 580'
+                                elif initial_line.find('470') > -1:
+                                    model = 'RX 470'
+                                elif initial_line.find('480') > -1:
+                                    model = 'RX 480'
                                 el = [gpu, model]
                                 if not el in types:
                                     types.append(el)
@@ -98,7 +102,7 @@ class Card:
         if self.type == None:
             return 0
 
-        if self.type == 'RX 570' or self.type == 'RX 580':
+        if self.type == 'RX 570' or self.type == 'RX 580' or self.type == 'RX 470' or self.type == 'RX 480':
             return 25
         else:
             return 35
