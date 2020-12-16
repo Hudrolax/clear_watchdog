@@ -67,15 +67,21 @@ class MinerLogs:
                                 gpu = int(piece.replace('GPU',''))
                                 crushes.append(gpu)
                     elif line.find('Radeon') > -1 and line.find('RX') > -1 and line.find('GPU') > -1:
+                        initial_line = line
                         pieces = line.split(' ')
                         for piece in pieces:
                             if piece.find('GPU') > -1:
                                 gpu = piece.replace('GPU', '')
                                 gpu = gpu.replace(':', '')
                                 gpu = int(gpu)
-                                el = [gpu, 'RX']
+                                model = 'RX'
+                                if initial_line.find('570') > -1:
+                                    model = 'RX 570'
+                                elif initial_line.find('580') > -1:
+                                    model = 'RX 580'
+                                el = [gpu, model]
                                 if not el in types:
-                                    types.append([gpu, 'RX'])
+                                    types.append(el)
         return [crushes, types]
 
 
@@ -92,7 +98,7 @@ class Card:
         if self.type == None:
             return 0
 
-        if self.type == 'RX':
+        if self.type == 'RX 570' or self.type == 'RX 580':
             return 25
         else:
             return 35
