@@ -54,7 +54,7 @@ class MinerLogs:
     @staticmethod
     def parse_logs():
         logs = MinerLogs.get_today_logs()
-        crushes = []
+        crashes = []
         types = []
         for log in logs:
             with open(log) as file:
@@ -65,7 +65,7 @@ class MinerLogs:
                         for piece in pieces:
                             if piece.find('GPU') > -1:
                                 gpu = int(piece.replace('GPU',''))
-                                crushes.append(gpu)
+                                crashes.append(gpu)
                     elif line.find('Radeon') > -1 and line.find('RX') > -1 and line.find('GPU') > -1:
                         initial_line = line
                         pieces = line.split(' ')
@@ -86,13 +86,13 @@ class MinerLogs:
                                 el = [gpu, model]
                                 if not el in types:
                                     types.append(el)
-        return [crushes, types]
+        return [crashes, types]
 
 
 class Card:
     def __init__(self, cvddc, mvddc):
         self.speed = 0
-        self.crushes = 0
+        self.crashes = 0
         self.cvddc = cvddc
         self.mvddc = mvddc
         self.type = None
@@ -108,7 +108,7 @@ class Card:
             return 35
 
     def __str__(self):
-        return f'speed={self.speed}:crushes={self.crushes} ({self.cvddc}/{self.mvddc})'
+        return f'speed={self.speed}:crashes={self.crashes} ({self.cvddc}/{self.mvddc})'
 
 class Miner:
     def __init__(self, ip, port):
@@ -135,7 +135,7 @@ class Miner:
                     continue
             parsed_log = MinerLogs.parse_logs()
             for card in enumerate(self.cards):
-                card[1].crushes = parsed_log[0].count(card[0]+1)
+                card[1].crashes = parsed_log[0].count(card[0]+1)
                 type = None
                 for parse_type in parsed_log[1]:
                     if parse_type[0] == card[0]+1:
@@ -208,16 +208,16 @@ class Miner:
     def print_cards_list(self):
         columns = 5
         table = PrettyTable()
-        table.field_names = ["#", "speed", "crushes", "cvddc", "mvddc", 'type']
+        table.field_names = ["#", "speed", "crashes", "cvddc", "mvddc", 'type']
         for card in enumerate(self.cards):
             _addon = ''
             if card[1].speed < card[1].normal_speed:
                 _addon = '!!!'
-            table.add_row([card[0]+1, f'{card[1].speed} {_addon}', card[1].crushes, card[1].cvddc, card[1].mvddc, card[1].type])
+            table.add_row([card[0]+1, f'{card[1].speed} {_addon}', card[1].crashes, card[1].cvddc, card[1].mvddc, card[1].type])
         print('----------------------------------------------------------------------')
         print(f'Total speed: {self.get_speed()}')
         print(table)
 
 if __name__ == '__main__':
-    crushes = MinerLogs.parse_logs()
-    print(crushes)
+    crashes = MinerLogs.parse_logs()
+    print(crashes)
