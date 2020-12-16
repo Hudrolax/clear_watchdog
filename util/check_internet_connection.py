@@ -2,13 +2,16 @@ import threading
 import requests
 from datetime import datetime
 from time import sleep
+from util.logger_super import LoggerSuper
+import logging
 
-class CheckInternetConnection:
+class CheckInternetConnection(LoggerSuper):
     CHECKTIME = 300
     SITES_FOR_CHECKING = []
     SITES_FOR_CHECKING.append('https://www.google.com')
     SITES_FOR_CHECKING.append('http://www.ru')
 
+    logger = logging.getLogger('CheckInternetConnection')
     def __init__(self):
         self._last_recieve_time = datetime.now()
         self._check_thread = threading.Thread(target=self._threaded_check_func, args=(), daemon=True)
@@ -23,11 +26,11 @@ class CheckInternetConnection:
     def _check_site(self, site):
         try:
             content = requests.get(site, timeout=5).content.decode()
-            print(f'{site} is ok')
+            self.logger.debug(f'{site} is ok')
             return True
         except:
             if __name__ == '__main__':
-                print(f'{site} is offline')
+                self.logger.info(f'{site} is offline')
             return False
 
     def _threaded_check_func(self):
@@ -37,5 +40,5 @@ class CheckInternetConnection:
                     self._last_recieve_time = datetime.now()
                     break
                 else:
-                    print(f'Error connection. Reboot network things in {round(self.CHECKTIME-(datetime.now() - self._last_recieve_time).total_seconds())} seconds.')
+                    self.logger.info(f'Error connection. Reboot network things in {round(self.CHECKTIME-(datetime.now() - self._last_recieve_time).total_seconds())} seconds.')
             sleep(20)
