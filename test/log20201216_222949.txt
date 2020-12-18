@@ -276,3 +276,4 @@ GPUs power: 261.2 W
 2020.12.16:22:30:58.032: main Eth speed: 66.845 MH/s, shares: 0/0/0, time: 0:00
 2020.12.16:22:30:58.032: main GPUs: 1: 17.613 MH/s (0) 2: 17.869 MH/s (0) 3: 0.000 MH/s (0) 4: 16.764 MH/s (0) 5: 0.000 MH/s (0) 6: 0.000 MH/s (0) 7: 0.000 MH/s (0) 8: 14.599 MH/s (0)
 2020.12.16:22:30:58.611: eths Eth: Received: {"id": 0, "jsonrpc":"2.0", "result": ["0x24412dcbe15ddb1f15e5d20b0e55fb072b5cc52e90d1475df14433de1184496b","0xd3d0aa11197dcdcfcb3ad3c73d415af47299bddb47fda6081d31d9dd06462f6a", "0x0000000080000000000000000000000000000000000000000000000000000000", "0x6080"]}
+2020.12.16:22:28:03.925: GPU3 Eth: Incorrect ETH share from GPU3

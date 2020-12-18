@@ -3,6 +3,7 @@ from miner.miner import Miner
 from time import sleep
 from config import MINER_IP, MINER_PORT, WATCHDOG_PID
 from util.keyboard_input import Keyboard
+from util.base_class import BaseClass
 import logging
 
 if __name__ == '__main__':
@@ -20,5 +21,5 @@ if __name__ == '__main__':
     miner = Miner(MINER_IP, MINER_PORT)
     watchdog = CWatchDog(miner, WATCHDOG_PID)
     keyboard_input = Keyboard(watchdog)
-    while True:
+    while BaseClass.working():
         sleep(1)
