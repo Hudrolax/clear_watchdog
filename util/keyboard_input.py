@@ -32,6 +32,8 @@ class Keyboard(LoggerSuper):
                         self.wd.miner.print_cards_list()
                     elif 'crashes' in cmd_list:
                         self.wd.miner.print_crashes()
+                    elif 'exit' in cmd_list:
+                        BaseClass.exit()
 
             except:
                 continue

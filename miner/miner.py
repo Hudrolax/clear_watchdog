@@ -181,12 +181,12 @@ class Miner(LoggerSuper):
             if card[1].speed < card[1].normal_speed:
                 _addon = '!!!'
             table.add_row([card[0]+1, f'{card[1].speed} {_addon}', card[1].crashes24h, card[1].cvddc, card[1].mvddc, card[1].cclock, card[1].mclock, card[1].type])
-        print('----------------------------------------------------------------------')
+        print('-----------------------------------------------------------------------')
         print(f'Total speed: {self.get_speed()}')
         print(table)
 
     def print_crashes(self):
-        print('----------------------------------------------------------------------')
+        print('-----------------------------------------------------------------------')
         print('Crashes:')
         table = PrettyTable()
         table.field_names = ["#", "crashes 24h", "crashes 1m"]
