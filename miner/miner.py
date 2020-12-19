@@ -9,7 +9,7 @@ from miner.miner_card import Card
 from miner.miner_logs import MinerLogs
 from util.logger_super import LoggerSuper
 from util.base_class import BaseClass
-from config import MINER_PATH
+from config import MINER_PATH, CHANGE_CONFIG
 from util.reboot import reboot
 import logging
 
@@ -94,6 +94,7 @@ class Miner(LoggerSuper):
                 self.logger.info("Not rebooting because it's' Test")
             BaseClass.exit()
 
+
     def _threaded_get_miner_info(self):
         while BaseClass.working():
             # Разбор конфига
@@ -105,7 +106,8 @@ class Miner(LoggerSuper):
             # парсинг логов 1 минуту
             self._parse_logs_1m()
             # Действия, при обнаружении краша за последнюю минуту
-            self._get_crash_last_minute()
+            if CHANGE_CONFIG:
+                self._get_crash_last_minute()
 
             sleep(5)
 
