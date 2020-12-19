@@ -28,9 +28,9 @@ class CWatchDog(COM_port, LoggerSuper):
         while True:
             if self.initialized:
                 speed = self.miner.get_speed()
-                self.logger.debug(f'watchdog: speed is {speed / 1000} mh/s')
-                if speed >= self.miner.get_minspeed()*1000 or self.miner.get_minspeed() == 0:
+                self.logger.debug(f'watchdog: speed is {speed} mh/s')
+                if speed >= self.miner.get_minspeed() or self.miner.get_minspeed() == 0:
                     self.send_to_serial('~U')  # Отправка команды "я в норме" на вотчдог
                 else:
-                    self.logger.info(f'Speed is {speed / 1000}, but terget speed is {self.miner.get_minspeed()}')
+                    self.logger.info(f'Speed is {speed }, but terget speed is {self.miner.get_minspeed()}')
             sleep(5)
