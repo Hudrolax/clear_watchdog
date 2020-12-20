@@ -9,7 +9,7 @@ from miner.miner_card import Card
 from miner.miner_logs import MinerLogs
 from util.logger_super import LoggerSuper
 from util.base_class import BaseClass
-from config import MINER_PATH, CHANGE_CONFIG
+from config import MINER_PATH, CHANGE_CONFIG, REBOOT_IF_CARD_SPEED_ZERO_5MIN
 from util.reboot import reboot
 import logging
 
@@ -52,6 +52,8 @@ class Miner(LoggerSuper):
                 self.cards[speed[0]].speed = speed[1] / 1000
             except IndexError:
                 continue
+        for card in self.cards:
+            card.check_speed()
 
     def _parse_logs_24h(self):
         parsed_log_24h = MinerLogs.parse_logs(86400)
@@ -94,6 +96,16 @@ class Miner(LoggerSuper):
                 self.logger.info("Not rebooting because it's' Test")
             BaseClass.exit()
 
+    def _check_card_speed_and_reboot(self):
+        for card in enumerate(self.cards):
+            if card[1].speed_zero_douring_5min():
+                self.logger.critical(f'GPU{card[0]} speed is 0 douring five minutes.')
+                if REBOOT_IF_CARD_SPEED_ZERO_5MIN:
+                    if MINER_PATH.find('test') == -1:
+                        self.logger.info('Rebooting...')
+                        reboot()
+                    else:
+                        self.logger.info("Not rebooting because it's' Test")
 
     def _threaded_get_miner_info(self):
         while BaseClass.working():
@@ -105,6 +117,8 @@ class Miner(LoggerSuper):
             self._parse_logs_24h()
             # парсинг логов 1 минуту
             self._parse_logs_1m()
+            # проверяем как долго на карте скорость 0 и перезагружаем, если дольше 5 минут
+            self._check_card_speed_and_reboot()
             # Действия, при обнаружении краша за последнюю минуту
             if CHANGE_CONFIG:
                 self._get_crash_last_minute()

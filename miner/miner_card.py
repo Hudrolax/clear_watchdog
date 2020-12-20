@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class Card:
     def __init__(self, cvddc, mvddc, cclock, mclock):
         self.speed = 0
@@ -12,6 +14,17 @@ class Card:
         self.set_cclock = 0
         self.set_mclock = 0
         self.type = None
+        self.speed_above_0_time = datetime.now()
+
+    def check_speed(self):
+        if self.speed > 0:
+            self.speed_above_0_time = datetime.now()
+
+    def speed_zero_douring_5min(self):
+        if (datetime.now() - self.speed_above_0_time).total_seconds() > 300:
+            return True
+        else:
+            return False
 
     def increase_voltage(self):
         if self.set_cvddc == 0 and (self.cvddc<=900 or self.cclock <= 1090):
