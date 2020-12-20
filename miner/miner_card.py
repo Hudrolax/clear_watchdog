@@ -27,7 +27,7 @@ class Card:
             return False
 
     def time_speed_belov_zero_min(self):
-        return  (datetime.now() - self.speed_above_0_time).total_seconds()/60
+        return  round((datetime.now() - self.speed_above_0_time).total_seconds()/60,1)
 
 
 
