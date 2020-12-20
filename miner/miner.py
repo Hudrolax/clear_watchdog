@@ -194,6 +194,8 @@ class Miner(LoggerSuper):
             _addon = ''
             if card[1].speed < card[1].normal_speed:
                 _addon = '!!!'
+            if card[1].speed == 0:
+                _addon = f'{card[1].time_speed_belov_zero_min()} min'
             table.add_row([card[0]+1, f'{card[1].speed} {_addon}', card[1].crashes24h, card[1].cvddc, card[1].mvddc, card[1].cclock, card[1].mclock, card[1].type])
         print('-----------------------------------------------------------------------')
         print(f'Total speed: {self.get_speed()}')

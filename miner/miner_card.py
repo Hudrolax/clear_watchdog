@@ -26,6 +26,11 @@ class Card:
         else:
             return False
 
+    def time_speed_belov_zero_min(self):
+        return  (datetime.now() - self.speed_above_0_time).total_seconds()/60
+
+
+
     def increase_voltage(self):
         if self.set_cvddc == 0 and (self.cvddc<=900 or self.cclock <= 1090):
             _cvoltage = self.cvddc+10
