@@ -36,10 +36,10 @@ class Card:
     @property
     def normal_speed(self):
         if self.type == None:
-            return 25
+            return 20
 
         if self.type == 'RX 570' or self.type == 'RX 580' or self.type == 'RX 470' or self.type == 'RX 480':
-            return 25
+            return 20
         else:
             return 35
 

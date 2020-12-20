@@ -69,23 +69,23 @@ class MinerConfig:
                     if card[0] < len(cards) - 1:
                         _new_line += ','
                 new_lines.append(_new_line + '\n')
-            elif line.find('-minRigSpeed ') > -1:
-                line = line.replace('\n', '')
-                bites = line.split(' ')
-                try:
-                    _min_speed = int(bites[1])
-                except:
-                    _min_speed = 0
-
-                _min_speed_by_cards = -10
-                for card in cards:
-                    _min_speed_by_cards += card.normal_speed
-
-                if _min_speed > _min_speed_by_cards:
-                    _new_line = f'-minRigSpeed {_min_speed_by_cards}\n'
-                else:
-                    _new_line = f'-minRigSpeed {_min_speed}\n'
-                new_lines.append(_new_line)
+            # elif line.find('-minRigSpeed ') > -1:
+            #     line = line.replace('\n', '')
+            #     bites = line.split(' ')
+            #     try:
+            #         _min_speed = int(bites[1])
+            #     except:
+            #         _min_speed = 0
+            #
+            #     _min_speed_by_cards = -10
+            #     for card in cards:
+            #         _min_speed_by_cards += card.normal_speed
+            #
+            #     if _min_speed > _min_speed_by_cards:
+            #         _new_line = f'-minRigSpeed {_min_speed_by_cards}\n'
+            #     else:
+            #         _new_line = f'-minRigSpeed {_min_speed}\n'
+            #     new_lines.append(_new_line)
             else:
                 new_lines.append(line)
         self._write_config_to_file(new_lines, MINER_PATH+'config.txt')
