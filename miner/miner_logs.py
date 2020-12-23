@@ -57,4 +57,15 @@ class MinerLogs:
                                 el = [gpu, model]
                                 if not el in types:
                                     types.append(el)
+                    elif line.find('P104-100') > -1:
+                        pieces = line.split(' ')
+                        for piece in pieces:
+                            if piece.find('GPU') > -1:
+                                gpu = piece.replace('GPU', '')
+                                gpu = gpu.replace(':', '')
+                                gpu = int(gpu)
+                                model = 'P104-100'
+                                el = [gpu, model]
+                                if not el in types:
+                                    types.append(el)
         return [crashes, types]

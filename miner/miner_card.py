@@ -58,6 +58,8 @@ class Card:
 
         if self.type == 'RX 570' or self.type == 'RX 580' or self.type == 'RX 470' or self.type == 'RX 480':
             return 20
+        if self.type == 'P104-100':
+            return 35
         else:
             return 35
 
