@@ -1,6 +1,7 @@
 from util.check_internet_connection import CheckInternetConnection
 from util.com_ports import COM_port
 from util.logger_super import LoggerSuper
+from config import REBOOT_IF_CARD_SPEED_ZERO_5MIN
 import threading
 from time import sleep
 import logging
@@ -29,7 +30,7 @@ class CWatchDog(COM_port, LoggerSuper):
             if self.initialized:
                 speed = self.miner.get_speed()
                 self.logger.debug(f'watchdog: speed is {speed} mh/s')
-                if speed >= self.miner.get_minspeed() or self.miner.get_minspeed() == 0:
+                if speed >= self.miner.get_minspeed() or self.miner.get_minspeed() == 0 or not REBOOT_IF_CARD_SPEED_ZERO_5MIN:
                     self.send_to_serial('~U')  # Отправка команды "я в норме" на вотчдог
                 else:
                     self.logger.info(f'Speed is {speed }, but terget speed is {self.miner.get_minspeed()}')
