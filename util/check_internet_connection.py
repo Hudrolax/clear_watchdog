@@ -40,5 +40,5 @@ class CheckInternetConnection(LoggerSuper):
                     self._last_recieve_time = datetime.now()
                     break
                 else:
-                    self.logger.info(f'Error connection. Reboot network things in {round(self.CHECKTIME-(datetime.now() - self._last_recieve_time).total_seconds())} seconds.')
+                    self.logger.info(f'Connection error to {_site}.')
             sleep(20)
