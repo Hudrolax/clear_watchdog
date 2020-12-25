@@ -108,9 +108,9 @@ class Miner(LoggerSuper):
                         self.logger.info("Not rebooting because it's' Test")
 
     def _threaded_get_miner_info(self):
+        # Разбор конфига
+        self._parse_config()
         while BaseClass.working():
-            # Разбор конфига
-            self._parse_config()
             # разбор данные от майнера
             self._pase_miner_data()
             # парсинг логов 24 часа
