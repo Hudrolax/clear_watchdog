@@ -110,6 +110,7 @@ class Miner(LoggerSuper):
     def _threaded_get_miner_info(self):
         # Разбор конфига
         self._parse_config()
+        print('Наберите cards для просмотра состояния рига.')
         while BaseClass.working():
             # разбор данные от майнера
             self._pase_miner_data()
