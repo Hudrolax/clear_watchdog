@@ -180,7 +180,10 @@ class Miner(LoggerSuper):
             finally:
                 sock.close()
         elif self.miner == 'lolminer':
-            return json.loads(requests.get(f"http://{self.ip }:{self.port}").content.decode())
+            try:
+                return json.loads(requests.get(f"http://{self.ip }:{self.port}").content.decode())
+            except:
+                return None
 
     def _get_speed_different(self, json):
         if json is not None:
