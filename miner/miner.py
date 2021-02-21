@@ -111,6 +111,8 @@ class Miner(LoggerSuper):
 
     def _lolminer_add_cards(self):
         json = self.get_json()
+        if json is None:
+            return None
         gpus = json.get('GPUs')
         for gpu in gpus:
             card_type = gpu.get('Name')
