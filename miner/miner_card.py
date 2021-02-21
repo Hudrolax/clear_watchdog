@@ -1,7 +1,7 @@
 from datetime import datetime
 
 class Card:
-    def __init__(self, cvddc, mvddc, cclock, mclock):
+    def __init__(self, cvddc, mvddc, cclock, mclock, card_type=None):
         self.speed = 0
         self.crashes24h = 0
         self.crashes1m = 0
@@ -13,7 +13,7 @@ class Card:
         self.set_mvddc = 0
         self.set_cclock = 0
         self.set_mclock = 0
-        self.type = None
+        self.type = card_type
         self.speed_above_0_time = datetime.now()
 
     def check_speed(self):
@@ -54,10 +54,10 @@ class Card:
     @property
     def normal_speed(self):
         if self.type == None:
-            return 20
+            return 8
 
         if self.type == 'RX 570' or self.type == 'RX 580' or self.type == 'RX 470' or self.type == 'RX 480':
-            return 20
+            return 8
         if self.type == 'P104-100':
             return 35
         else:

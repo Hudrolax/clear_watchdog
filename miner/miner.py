@@ -11,11 +11,13 @@ from util.logger_super import LoggerSuper
 from util.base_class import BaseClass
 from config import MINER_PATH, CHANGE_CONFIG, REBOOT_IF_CARD_SPEED_ZERO_5MIN
 from util.reboot import reboot
+import requests
 import logging
 
 class Miner(LoggerSuper):
     logger = logging.getLogger('Miner')
-    def __init__(self, ip, port):
+    def __init__(self, ip, port, miner):
+        self.miner = miner
         self.ip = ip
         self.port = port
         self.config = MinerConfig()
@@ -107,18 +109,37 @@ class Miner(LoggerSuper):
                     else:
                         self.logger.info("Not rebooting because it's' Test")
 
+    def _lolminer_add_cards(self):
+        json = self.get_json()
+        gpus = json.get('GPUs')
+        for gpu in gpus:
+            card_type = gpu.get('Name')
+            if card_type.find('RX 470') > -1:
+                card_type = 'RX 470'
+            elif card_type.find('RX 480') > -1:
+                card_type = 'RX 480'
+            elif card_type.find('RX 570') > -1:
+                card_type = 'RX 570'
+            elif card_type.find('RX 580') > -1:
+                card_type = 'RX 580'
+            self.cards.append(Card(0, 0, 0, 0, card_type))
+
     def _threaded_get_miner_info(self):
         # Разбор конфига
-        self._parse_config()
+        if self.miner == 'phoenix':
+            self._parse_config()
+        elif self.miner == 'lolminer':
+            self._lolminer_add_cards()
         print('Наберите cards для просмотра состояния рига.')
         while BaseClass.working():
             # разбор данные от майнера
             self._pase_miner_data()
-            # парсинг логов 24 часа
-            self._parse_logs_24h()
-            # парсинг логов 1 минуту
-            self._parse_logs_1m()
-            # проверяем как долго на карте скорость 0 и перезагружаем, если дольше 5 минут
+            if self.miner == 'phoenix':
+                # парсинг логов 24 часа
+                self._parse_logs_24h()
+                # парсинг логов 1 минуту
+                self._parse_logs_1m()
+                # проверяем как долго на карте скорость 0 и перезагружаем, если дольше 5 минут
             self._check_card_speed_and_reboot()
             # Действия, при обнаружении краша за последнюю минуту
             if CHANGE_CONFIG:
@@ -136,35 +157,42 @@ class Miner(LoggerSuper):
         return self.config.min_speed
 
     def get_json(self):
-        try:
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            server_address = (self.ip, self.port)
-            sock.settimeout(3)
-            sock.connect(server_address)
-        except:
-            return None
+        if self.miner == 'phoenix':
+            try:
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                server_address = (self.ip, self.port)
+                sock.settimeout(3)
+                sock.connect(server_address)
+            except:
+                return None
 
-        try:
-            request = {"id": 0, "jsonrpc": "2.0", "method": "miner_getstat2"}
-            sock.sendall(json.dumps(request).encode())
-            sock.sendall(os.linesep.encode())
-            sock.shutdown(socket.SHUT_WR)  # no more writing
-            with sock.makefile('r', encoding='utf-8') as file:
-                response = json.load(file)
-            json_answer = response.get('result')
-            return json_answer
-        except:
-            return None
-        finally:
-            sock.close()
+            try:
+                request = {"id": 0, "jsonrpc": "2.0", "method": "miner_getstat2"}
+                sock.sendall(json.dumps(request).encode())
+                sock.sendall(os.linesep.encode())
+                sock.shutdown(socket.SHUT_WR)  # no more writing
+                with sock.makefile('r', encoding='utf-8') as file:
+                    response = json.load(file)
+                json_answer = response.get('result')
+                return json_answer
+            except:
+                return None
+            finally:
+                sock.close()
+        elif self.miner == 'lolminer':
+            return json.loads(requests.get(f"http://{self.ip }:{self.port}").content.decode())
 
-    @staticmethod
-    def _get_speed_different(json):
+    def _get_speed_different(self, json):
         if json is not None:
-            speed_str = json[3].split(';')
             speed_int = []
-            for crd in speed_str:
-                speed_int.append(int(crd))
+            if self.miner == 'phoenix':
+                speed_str = json[3].split(';')
+                for crd in speed_str:
+                    speed_int.append(int(crd))
+            elif self.miner == 'lolminer':
+                gpus = json.get("GPUs")
+                for gpu in gpus:
+                    speed_int.append(gpu.get('Performance')*1000)
             return speed_int
         else:
             return []
