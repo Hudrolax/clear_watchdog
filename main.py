@@ -18,6 +18,9 @@ if __name__ == '__main__':
     else:
         logging.basicConfig(format=LOG_FORMAT, level=LOG_LEVEL, datefmt='%d/%m/%y %H:%M:%S')
 
+    pause = 60
+    logging.info(f'Ждем {pause} сек, пока майнер расчехлится')
+    sleep(pause) # Ждем, пока мйнер распиздюрицца
     miner = Miner(MINER_IP, MINER_PORT, MINER)
     watchdog = CWatchDog(miner, WATCHDOG_PID)
     keyboard_input = Keyboard(watchdog)
