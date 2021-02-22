@@ -114,17 +114,20 @@ class Miner(LoggerSuper):
         if json is None:
             return None
         gpus = json.get('GPUs')
-        for gpu in gpus:
-            card_type = gpu.get('Name')
-            if card_type.find('RX 470') > -1:
-                card_type = 'RX 470'
-            elif card_type.find('RX 480') > -1:
-                card_type = 'RX 480'
-            elif card_type.find('RX 570') > -1:
-                card_type = 'RX 570'
-            elif card_type.find('RX 580') > -1:
-                card_type = 'RX 580'
-            self.cards.append(Card(0, 0, 0, 0, card_type))
+        if gpus is None:
+            self.cards.append(Card(0, 0, 0, 0, 'RX 580'))
+        else:
+            for gpu in gpus:
+                card_type = gpu.get('Name')
+                if card_type.find('RX 470') > -1:
+                    card_type = 'RX 470'
+                elif card_type.find('RX 480') > -1:
+                    card_type = 'RX 480'
+                elif card_type.find('RX 570') > -1:
+                    card_type = 'RX 570'
+                elif card_type.find('RX 580') > -1:
+                    card_type = 'RX 580'
+                self.cards.append(Card(0, 0, 0, 0, card_type))
 
     def _threaded_get_miner_info(self):
         # Разбор конфига
