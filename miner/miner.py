@@ -184,7 +184,7 @@ class Miner(LoggerSuper):
                 sock.close()
         elif self.miner == 'lolminer':
             try:
-                return json.loads(requests.get(f"http://{self.ip }:{self.port}").content.decode())
+                return json.loads(requests.get(f"http://{self.ip }:{self.port}", timeout=3).content.decode())
             except:
                 return None
 
